@@ -4,17 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Fountain.generated.h"
-
+#include "OpeningDoor.generated.h"
 
 UCLASS()
-class TESTUNREALENGINE_API AFountain : public AActor
+class TESTUNREALENGINE_API AOpeningDoor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AFountain();
+	AOpeningDoor();
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,7 +26,7 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	float YawValue;
-	
+
 	void RotateDoor();
 
 };

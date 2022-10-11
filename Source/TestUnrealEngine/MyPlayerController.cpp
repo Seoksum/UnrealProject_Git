@@ -126,6 +126,8 @@ bool AMyPlayerController::ApplyHUD(TSubclassOf<class UUserWidget> WidgetToApply,
 		else if (WidgetToApply== InventoryHUDClass)
 		{
 			UMyInventoryHUD* TestHUD = Cast<UMyInventoryHUD>(CurrentWidget);
+			MyGameInstanceRef = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+
 			TestHUD->SetSlot1(MyGameInstanceRef->GetHpCount());
 			TestHUD->SetSlot2(MyGameInstanceRef->GetManaCount());
 		}

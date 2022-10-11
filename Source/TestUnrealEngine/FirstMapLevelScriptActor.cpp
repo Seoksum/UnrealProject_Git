@@ -1,28 +1,21 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "SelectMapLevelScriptActor.h"
+#include "FirstMapLevelScriptActor.h"
 #include "MovieSceneSequencePlayer.h"
 #include "LevelSequence/Public/LevelSequencePlayer.h"
 #include "LevelSequence/Public/LevelSequence.h"
-#include "MyCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "MyGameInstance.h"
-#include "Fountain.h"
-#include "TimerManager.h"
+#include "OpeningDoor.h"
 
-
-
-ASelectMapLevelScriptActor::ASelectMapLevelScriptActor()
+AFirstMapLevelScriptActor::AFirstMapLevelScriptActor()
 {
-
 	FStringAssetReference SequenceName(TEXT("LevelSequence'/Game/Cinematics/FirstMapSequence_G.FirstMapSequence_G'"));
 	FirstMapSequence = Cast<ULevelSequence>(SequenceName.TryLoad());
-
-
 }
 
-void ASelectMapLevelScriptActor::BeginPlay()
+void AFirstMapLevelScriptActor::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -40,7 +33,7 @@ void ASelectMapLevelScriptActor::BeginPlay()
 				FirstMapSequence,
 				PlaybackSettings,
 				currentLevelSequenceActor);
-			
+
 			SequencePlayer->Play();
 
 			FScriptDelegate funcDelegate;
@@ -58,7 +51,7 @@ void ASelectMapLevelScriptActor::BeginPlay()
 	}
 }
 
-void ASelectMapLevelScriptActor::DestroyDoor()
+void AFirstMapLevelScriptActor::DestroyDoor()
 {
 	TArray<AActor*> Doors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), FindDoorType, Doors);
@@ -70,6 +63,3 @@ void ASelectMapLevelScriptActor::DestroyDoor()
 	GetWorld()->GetTimerManager().ClearTimer(DoorTimerHandle);
 
 }
-
-
-

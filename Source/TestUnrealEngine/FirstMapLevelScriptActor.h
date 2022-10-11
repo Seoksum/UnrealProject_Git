@@ -4,21 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "Engine/LevelScriptActor.h"
-#include "SelectMapLevelScriptActor.generated.h"
+#include "FirstMapLevelScriptActor.generated.h"
 
 /**
  * 
  */
-
-
 DECLARE_MULTICAST_DELEGATE(FOpenDoor);
 UCLASS()
-class TESTUNREALENGINE_API ASelectMapLevelScriptActor : public ALevelScriptActor
+class TESTUNREALENGINE_API AFirstMapLevelScriptActor : public ALevelScriptActor
 {
 	GENERATED_BODY()
+	
 
 public:
-	ASelectMapLevelScriptActor();
+	AFirstMapLevelScriptActor();
 
 
 protected:
@@ -35,7 +34,7 @@ public:
 	FOpenDoor OpenDoor;
 
 	UFUNCTION()
-	void DestroyDoor();
+		void DestroyDoor();
 
 private:
 	UPROPERTY(VisibleAnywhere)
@@ -45,8 +44,5 @@ private:
 	class ULevelSequencePlayer* SequencePlayer;
 
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class AFountain> FindDoorType;
-
-	
-	
+	TSubclassOf<class AOpeningDoor> FindDoorType;
 };
